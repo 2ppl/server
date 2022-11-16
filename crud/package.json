@@ -1,0 +1,6 @@
+{
+  "name": "@2ppl/server/crud",
+  "types": "../dist/crud/index.d.ts",
+  "main": "../dist/crud/index.js",
+  "sideEffects": false
+}

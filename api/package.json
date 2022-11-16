@@ -1,0 +1,6 @@
+{
+  "name": "@2ppl/server/api",
+  "types": "../dist/api/index.d.ts",
+  "main": "../dist/api/index.js",
+  "sideEffects": false
+}

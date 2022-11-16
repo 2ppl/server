@@ -1,0 +1,60 @@
+{
+  "name": "@2ppl/server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./api": {
+      "types": "./dist/api/index.d.ts",
+      "node": "./dist/api/index.js",
+      "require": "./dist/api/index.js"
+    },
+    "./crud": {
+      "types": "./dist/crud/index.d.ts",
+      "node": "./dist/crud/index.js",
+      "require": "./dist/crud/index.js"
+    },
+    "./examples": {
+      "types": "./dist/examples/index.d.ts",
+      "node": "./dist/examples/index.js",
+      "require": "./dist/examples/index.js"
+    },
+    "./mongo": {
+      "types": "./dist/mongo/index.d.ts",
+      "node": "./dist/mongo/index.js",
+      "require": "./dist/mongo/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2ppl/server.git"
+  },
+  "author": "smithjke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/2ppl/server/issues"
+  },
+  "homepage": "https://github.com/2ppl/server#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@types/node": "^18.11.9",
+    "semantic-release": "^19.0.5",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@2ppl/core": "^1.0.2",
+    "fastify": "^4.10.0"
+  }
+}

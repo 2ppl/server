@@ -1,1 +1,1 @@
-# server
+# @2ppl/server

@@ -1,0 +1,6 @@
+{
+  "name": "@2ppl/server/mongo",
+  "types": "../dist/mongo/index.d.ts",
+  "main": "../dist/mongo/index.js",
+  "sideEffects": false
+}

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "module": "CommonJS",
+    "target": "ES2021",
+    "outDir": "dist",
+    "baseUrl": "src"
+  }
+}

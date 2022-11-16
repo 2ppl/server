@@ -1,0 +1,6 @@
+{
+  "name": "@2ppl/server/examples",
+  "types": "../dist/examples/index.d.ts",
+  "main": "../dist/examples/index.js",
+  "sideEffects": false
+}
