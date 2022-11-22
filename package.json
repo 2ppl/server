@@ -30,6 +30,11 @@
       "types": "./dist/mongo/index.d.ts",
       "node": "./dist/mongo/index.js",
       "require": "./dist/mongo/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "node": "./dist/utils/index.js",
+      "require": "./dist/utils/index.js"
     }
   },
   "files": [
@@ -38,7 +43,8 @@
     "api",
     "crud",
     "examples",
-    "mongo"
+    "mongo",
+    "utils"
   ],
   "scripts": {
     "build": "tsc",

@@ -1,0 +1,6 @@
+{
+  "name": "@2ppl/server/utils",
+  "types": "../dist/utils/index.d.ts",
+  "main": "../dist/utils/index.js",
+  "sideEffects": false
+}
