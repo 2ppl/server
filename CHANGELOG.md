@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/2ppl/server/compare/v1.0.1...v1.1.0) (2022-11-22)
+
+
+### Features
+
+* add included dotent with node: support ([853c699](https://github.com/2ppl/server/commit/853c69985486e1291d020c792c9b54e9594e5cc1))
+
 ## [1.0.1](https://github.com/2ppl/server/compare/v1.0.0...v1.0.1) (2022-11-21)
 
 
