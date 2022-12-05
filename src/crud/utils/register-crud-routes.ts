@@ -1,6 +1,5 @@
-import { AnyCrudType, CrudSchema } from '@2ppl/core/crud';
+import { AnyCrudType, CrudSchema, CrudService } from '@2ppl/core/crud';
 import { FastifyInstance } from 'fastify';
-import { CrudFastifyService } from '../services';
 import { makeFindOneRoute } from './make-find-one-route';
 import { makeFindAllRoute } from './make-find-all-route';
 import { makeCreateRoute } from './make-create-route';
@@ -10,48 +9,48 @@ import { makeRemoveRoute } from './make-remove-route';
 export type RegisterCrudRoutesProps<T extends AnyCrudType> = {
   fastifyInstance: FastifyInstance;
   crudSchema: CrudSchema;
-  useCrudFastifyService: () => CrudFastifyService<T>;
+  crudService: CrudService<T>;
 };
 
 export function registerCrudRoutes<T extends AnyCrudType>(props: RegisterCrudRoutesProps<T>) {
   const {
     fastifyInstance,
     crudSchema,
-    useCrudFastifyService,
+    crudService,
   } = props;
 
   fastifyInstance.route(
     makeFindOneRoute({
       crudSchema,
-      useCrudFastifyService,
+      crudService,
     }),
   );
 
   fastifyInstance.route(
     makeFindAllRoute({
       crudSchema,
-      useCrudFastifyService,
+      crudService,
     }),
   );
 
   fastifyInstance.route(
     makeCreateRoute({
       crudSchema,
-      useCrudFastifyService,
+      crudService,
     }),
   );
 
   fastifyInstance.route(
     makeUpdateRoute({
       crudSchema,
-      useCrudFastifyService,
+      crudService,
     }),
   );
 
   fastifyInstance.route(
     makeRemoveRoute({
       crudSchema,
-      useCrudFastifyService,
+      crudService,
     }),
   );
 }

@@ -5,7 +5,7 @@ import {
   makeCrudFindAllQuery,
   makeCrudFindAllResult
 } from '@2ppl/core/crud';
-import { FastifyReply, FastifyRequest, RouteOptions } from 'fastify';
+import { FastifyRequest, RouteOptions } from 'fastify';
 import { CrudRouteProps } from '../common';
 
 export function makeFindAllRoute<T extends AnyCrudType>(props: CrudRouteProps<T>): RouteOptions {
@@ -21,17 +21,8 @@ export function makeFindAllRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
         200: makeCrudFindAllResult(props.crudSchema.listedEntity),
       },
     },
-    handler: async (request: FastifyRequest, reply: FastifyReply) => {
-      try {
-        const crudFastifyService = props.useCrudFastifyService();
-        crudFastifyService.setRequest(request);
-        return crudFastifyService.findAll(
-          request.query as CrudFindAllQuery<any>,
-        );
-      } catch (e: any) {
-        reply.code(e?.code || 500);
-        throw e;
-      }
-    },
+    handler: async (request: FastifyRequest) => props.crudService.findAll(
+      request.query as CrudFindAllQuery<any>,
+    ),
   };
 }

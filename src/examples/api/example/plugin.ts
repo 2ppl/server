@@ -4,6 +4,8 @@ import { registerCrudRoutes } from '../../../crud';
 import { useExampleService } from './di';
 
 export async function plugin(fastifyInstance: FastifyInstance) {
+  const crudService = useExampleService();
+
   const {
     crudSchema,
     entityApiConfig,
@@ -12,33 +14,25 @@ export async function plugin(fastifyInstance: FastifyInstance) {
   registerCrudRoutes({
     fastifyInstance,
     crudSchema,
-    useCrudFastifyService: useExampleService,
+    crudService,
   });
 
   fastifyInstance.route({
     method: entityApiConfig.superCreate.method as any,
     url: entityApiConfig.superCreate.url,
     schema: {},
-    handler: async (request: FastifyRequest) => {
-      const service = useExampleService();
-      service.setRequest(request);
-      return service.superCreate(
-        request.body as Schema.Example.CreateEntity,
-      );
-    },
+    handler: async (request: FastifyRequest) => crudService.superCreate(
+      request.body as Schema.Example.CreateEntity,
+    ),
   });
 
   fastifyInstance.route({
     method: entityApiConfig.superUpdate.method as any,
     url: entityApiConfig.superUpdate.url,
     schema: {},
-    handler: async (request: FastifyRequest) => {
-      const service = useExampleService();
-      service.setRequest(request);
-      return service.superUpdate(
-        request.body as Schema.Example.UpdateEntity,
-        request.params as Schema.Example.EntityKey,
-      );
-    },
+    handler: async (request: FastifyRequest) => crudService.superUpdate(
+      request.body as Schema.Example.UpdateEntity,
+      request.params as Schema.Example.EntityKey,
+    ),
   });
 }

@@ -1,5 +1,1 @@
-import * as Example from './example';
-
-export {
-  Example,
-};
+export * as Example from './example';

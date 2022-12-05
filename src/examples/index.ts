@@ -1,5 +1,1 @@
-import * as Api from './api';
-
-export {
-  Api,
-};
+export * as Api from './api';
