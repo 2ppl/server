@@ -15,7 +15,7 @@ export class App {
   private readonly modules: Array<AppModule>;
 
   constructor(props: AppProps) {
-    console.log('App constructor props 1', props);
+    console.log('App constructor props', props);
 
     this.fastifyInstance = props.fastifyInstance;
     this.modules = props.modules;
