@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/2ppl/server/compare/v1.1.0...v1.1.1) (2022-12-05)
+
+
+### Bug Fixes
+
+* add 1 ([a02be90](https://github.com/2ppl/server/commit/a02be903aed9d368c42aafc333dbfc4e18941ddd))
+
 # [1.1.0](https://github.com/2ppl/server/compare/v1.0.1...v1.1.0) (2022-11-22)
 
 
