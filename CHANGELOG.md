@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/2ppl/server/compare/v1.1.1...v1.1.2) (2022-12-05)
+
+
+### Performance Improvements
+
+* second version up ([93a5d33](https://github.com/2ppl/server/commit/93a5d335269cb81d59911d6eeae06fa13841c91c))
+
 ## [1.1.1](https://github.com/2ppl/server/compare/v1.1.0...v1.1.1) (2022-12-05)
 
 
