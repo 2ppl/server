@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/2ppl/server/compare/v2.0.0...v2.1.0) (2022-12-06)
+
+
+### Features
+
+* add recursive migrations collector ([8689628](https://github.com/2ppl/server/commit/86896283cb2e404cbb3b091baa3f38bb5c276fb3))
+
 # [2.0.0](https://github.com/2ppl/server/compare/v1.1.2...v2.0.0) (2022-12-06)
 
 
