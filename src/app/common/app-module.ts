@@ -2,14 +2,14 @@ import { FastifyInstance, FastifyPluginAsync } from 'fastify';
 import { Knex } from 'knex';
 
 export type AppModuleProps = {
-  migration?: Knex.Migration;
+  migrations?: Record<string, Knex.Migration>;
   plugin?: FastifyPluginAsync;
   modules?: Array<AppModule>;
 };
 
 export class AppModule {
   private readonly prefix: string | null;
-  private readonly migration?: Knex.Migration;
+  private readonly migrations?: Record<string, Knex.Migration>;
   private readonly plugin?: FastifyPluginAsync;
   private readonly modules?: Array<AppModule>;
 
@@ -17,7 +17,7 @@ export class AppModule {
     console.log('AppModule constructor', prefix, props);
 
     this.prefix = prefix;
-    this.migration = props.migration;
+    this.migrations = props.migrations;
     this.plugin = props.plugin;
     this.modules = props.modules;
   }
@@ -38,5 +38,26 @@ export class AppModule {
 
       fastifyInstance.register(scope, { prefix: this.prefix || undefined });
     }
+  }
+
+  getMigrations(): Record<string, Knex.Migration> {
+    const migrations: Record<string, Knex.Migration> = {};
+
+    if (this.migrations) {
+      for (const key in this.migrations) {
+        migrations[key] = this.migrations[key];
+      }
+    }
+
+    if (this.modules) {
+      for (const module of this.modules) {
+        const moduleMigrations = module.getMigrations();
+        for (const key in moduleMigrations) {
+          migrations[key] = moduleMigrations[key];
+        }
+      }
+    }
+
+    return migrations;
   }
 }
