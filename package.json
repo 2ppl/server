@@ -16,6 +16,11 @@
       "node": "./dist/api/index.js",
       "require": "./dist/api/index.js"
     },
+    "./app": {
+      "types": "./dist/app/index.d.ts",
+      "node": "./dist/app/index.js",
+      "require": "./dist/app/index.js"
+    },
     "./crud": {
       "types": "./dist/crud/index.d.ts",
       "node": "./dist/crud/index.js",
@@ -41,6 +46,7 @@
     "dist",
     "dist/**/!(*.tsbuildinfo)",
     "api",
+    "app",
     "crud",
     "examples",
     "mongo",
