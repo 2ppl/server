@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/2ppl/server/compare/v1.1.2...v2.0.0) (2022-12-06)
+
+
+### Features
+
+* add app ([6da7ae6](https://github.com/2ppl/server/commit/6da7ae6db1ea612f5d970c666863dafd0af81273))
+* app " ([2731aaa](https://github.com/2ppl/server/commit/2731aaab337e4b93cfb769abc73eea74c6e77996))
+
+
+### BREAKING CHANGES
+
+* refactor
+
 ## [1.1.2](https://github.com/2ppl/server/compare/v1.1.1...v1.1.2) (2022-12-05)
 
 
