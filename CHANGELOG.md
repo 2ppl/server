@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/2ppl/server/compare/v2.1.0...v2.2.0) (2022-12-07)
+
+
+### Features
+
+* add migration source ([bfb6d49](https://github.com/2ppl/server/commit/bfb6d4947c10167742b08a62fe6cfcc0d17c2f87))
+
 # [2.1.0](https://github.com/2ppl/server/compare/v2.0.0...v2.1.0) (2022-12-06)
 
 
