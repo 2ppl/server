@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/2ppl/server/compare/v2.2.0...v2.2.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* move migration source and fix async call of migrations ([e487c06](https://github.com/2ppl/server/commit/e487c06ed53fc80155b08b32b88cd9e69cca960f))
+
 # [2.2.0](https://github.com/2ppl/server/compare/v2.1.0...v2.2.0) (2022-12-07)
 
 
