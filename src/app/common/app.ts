@@ -1,30 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { Knex } from 'knex';
 import { AppModule } from './app-module';
-
-export class MigrationSource {
-  private readonly migrations: Record<string, Knex.Migration>;
-
-  constructor(migrations: Record<string, Knex.Migration>) {
-    this.migrations = migrations;
-  }
-
-  async getMigrations(): Promise<Array<string>> {
-    const keys = Object.keys(this.migrations).sort((a, b) => Number(a) - Number(b));
-
-    console.log('Migration keys:', keys);
-
-    return keys;
-  }
-
-  getMigrationName(name: string): string {
-    return name;
-  }
-
-  getMigration<T extends keyof Record<string, Knex.Migration>>(name: T): any {
-    return this.migrations[name];
-  }
-}
+import { MigrationSource } from './migration-source';
 
 export type AppProps = {
   fastify: FastifyInstance;
@@ -60,17 +37,17 @@ export class App {
   }
 
   private async registerFastify(): Promise<void> {
-    this.modules.forEach((module) => {
+    for (const module of this.modules) {
       module.registerFastify(this.fastifyInstance);
-    });
+    }
   }
 
   private async migrate(): Promise<void> {
-    this.knex.migrate.latest({
+    const migrate = await this.knex.migrate.latest({
       migrationSource: this.migrationSource,
-    })
-      .then((res) => console.log('Migrate success!', res))
-      .catch((error) => console.log('Migrate error!', error));
+    });
+
+    console.log('Migrate success!', migrate)
   }
 
   async init(): Promise<void> {
