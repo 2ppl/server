@@ -14,7 +14,7 @@ export class AppModule {
   private readonly modules?: Array<AppModule>;
 
   constructor(prefix: string | null, props: AppModuleProps) {
-    console.log('AppModule constructor', prefix, props);
+    console.log('AppModule constructor', prefix);
 
     this.prefix = prefix;
     this.migrations = props.migrations;

@@ -1,9 +1,33 @@
 import { FastifyInstance } from 'fastify';
-import { AppModule } from './app-module';
 import { Knex } from 'knex';
+import { AppModule } from './app-module';
+
+export class MigrationSource {
+  private readonly migrations: Record<string, Knex.Migration>;
+
+  constructor(migrations: Record<string, Knex.Migration>) {
+    this.migrations = migrations;
+  }
+
+  async getMigrations(): Promise<Array<string>> {
+    const keys = Object.keys(this.migrations).sort((a, b) => Number(a) - Number(b));
+
+    console.log('Migration keys:', keys);
+
+    return keys;
+  }
+
+  getMigrationName(name: string): string {
+    return name;
+  }
+
+  getMigration<T extends keyof Record<string, Knex.Migration>>(name: T): any {
+    return this.migrations[name];
+  }
+}
 
 export type AppProps = {
-  fastifyInstance: FastifyInstance;
+  fastify: FastifyInstance;
   knex: Knex;
   modules: Array<AppModule>;
 };
@@ -16,22 +40,13 @@ export class App {
   private readonly fastifyInstance: FastifyInstance;
   private readonly knex: Knex;
   private readonly modules: Array<AppModule>;
+  private readonly migrationSource: MigrationSource;
 
   constructor(props: AppProps) {
-    console.log('App constructor props 1', props);
-
-    this.fastifyInstance = props.fastifyInstance;
+    this.fastifyInstance = props.fastify;
     this.knex = props.knex;
     this.modules = props.modules;
-  }
 
-  private async registerFastify(): Promise<void> {
-    this.modules.forEach((module) => {
-      module.registerFastify(this.fastifyInstance);
-    });
-  }
-
-  private async migrate(): Promise<void> {
     const migrations: Record<string, Knex.Migration> = {};
 
     for (const module of this.modules) {
@@ -41,7 +56,21 @@ export class App {
       }
     }
 
-    console.log('APP MIGRATIONS >>>', migrations);
+    this.migrationSource = new MigrationSource(migrations);
+  }
+
+  private async registerFastify(): Promise<void> {
+    this.modules.forEach((module) => {
+      module.registerFastify(this.fastifyInstance);
+    });
+  }
+
+  private async migrate(): Promise<void> {
+    this.knex.migrate.latest({
+      migrationSource: this.migrationSource,
+    })
+      .then((res) => console.log('Migrate success!', res))
+      .catch((error) => console.log('Migrate error!', error));
   }
 
   async init(): Promise<void> {
@@ -50,8 +79,6 @@ export class App {
   }
 
   async start(props: AppStartProps): Promise<void> {
-    console.log('App start');
-
     await this.fastifyInstance.listen({ port: props.port });
 
     const address = this.fastifyInstance.server.address();
