@@ -1,3 +1,15 @@
+# [2.3.0](https://github.com/2ppl/server/compare/v2.2.1...v2.3.0) (2022-12-09)
+
+
+### Bug Fixes
+
+* remove objection ModelClass type ([416737c](https://github.com/2ppl/server/commit/416737ca6a4887923e621ff9467b154ed256187a))
+
+
+### Features
+
+* add orm crud repository ([aea226d](https://github.com/2ppl/server/commit/aea226d724c096d8730964840dd43fe3d64bdcd7))
+
 ## [2.2.1](https://github.com/2ppl/server/compare/v2.2.0...v2.2.1) (2022-12-07)
 
 
