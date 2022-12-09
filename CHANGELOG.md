@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/2ppl/server/compare/v2.3.1...v2.3.2) (2022-12-09)
+
+
+### Bug Fixes
+
+* remove prev entity from update method ([d06173b](https://github.com/2ppl/server/commit/d06173bb38a7b99866c00c713e50390c92e8e48c))
+
 ## [2.3.1](https://github.com/2ppl/server/compare/v2.3.0...v2.3.1) (2022-12-09)
 
 
