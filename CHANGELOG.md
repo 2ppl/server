@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/2ppl/server/compare/v2.3.0...v2.3.1) (2022-12-09)
+
+
+### Bug Fixes
+
+* refactor crud repo ([51b2f7c](https://github.com/2ppl/server/commit/51b2f7c8fd48b61178de521eb078502801714d54))
+
 # [2.3.0](https://github.com/2ppl/server/compare/v2.2.1...v2.3.0) (2022-12-09)
 
 
