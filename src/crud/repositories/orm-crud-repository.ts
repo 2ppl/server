@@ -1,4 +1,3 @@
-import { ModelClass } from 'objection';
 import {
   CreateEntity,
   CrudRepository,
@@ -10,9 +9,9 @@ import {
 } from './crud-repository';
 
 export class OrmCrudRepository<T extends Entity> implements CrudRepository<T> {
-  private readonly mc: ModelClass<any>;
+  private readonly mc: any;
 
-  constructor(mc: ModelClass<any>) {
+  constructor(mc: any) {
     this.mc = mc;
   }
 
