@@ -14,7 +14,7 @@ export abstract class FastifyCrudService<T extends BaseCrudType> implements Crud
 
   async update(data: T['updateEntity'], params: T['entityKey']): Promise<T['singleEntity']> {
     if (this.repository) {
-      const entity = await this.repository.update(data, params);
+      const entity = await this.repository.update(data, (params as any).id);
       if (entity) return entity;
       throw new FastifyError('No Entity', 404);
     }
@@ -23,7 +23,7 @@ export abstract class FastifyCrudService<T extends BaseCrudType> implements Crud
 
   async remove(params: T['entityKey']): Promise<void> {
     if (this.repository) {
-      const deleted = await this.repository.remove(params);
+      const deleted = await this.repository.remove((params as any).id);
       if (deleted) return;
       throw new FastifyError('No Entity', 404);
     }
@@ -32,7 +32,7 @@ export abstract class FastifyCrudService<T extends BaseCrudType> implements Crud
 
   async findOne(params: T['entityKey']): Promise<T['singleEntity']> {
     if (this.repository) {
-      const entity = await this.repository.findOne(params);
+      const entity = await this.repository.findOne((params as any).id);
       if (entity) return entity;
       throw new FastifyError('No Entity', 404);
     }
@@ -48,8 +48,9 @@ export abstract class FastifyCrudService<T extends BaseCrudType> implements Crud
       return this.repository.findAll({
         limit: cursor.limit,
         offset: cursor.offset,
-        order: cursor.order && [cursor.order],
-      }, filter);
+        order: cursor.order,
+        filter,
+      });
     }
     throw new Error('Not Implemented');
   }

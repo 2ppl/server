@@ -1,7 +1,7 @@
 export type Entity = {
   id: string;
-  createdAt: number;
-  updatedAt: number;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type CreateEntity<T extends Entity> = Omit<T, 'id' | 'createdAt' | 'updatedAt'>;
@@ -11,16 +11,22 @@ export type UpdateEntity<T extends Entity> = Partial<CreateEntity<T>>;
 export type FilterValue = {
   equal?: string;
   like?: string;
-  lt?: number;
-  gt?: number;
+  lte?: string;
+  gte?: string;
+  lt?: string;
+  gt?: string;
 } | string;
 
 export type Filter<T extends Entity> = Partial<Record<keyof T, FilterValue>>;
 
-export type Cursor = {
+export type ListedQuery<T extends Entity> = {
   limit?: number;
   offset?: number;
-  order?: Array<{ field: string; direction: 'asc' | 'desc' }>;
+  order?: {
+    field: string;
+    direction: 'asc' | 'desc';
+  };
+  filter?: Filter<T>;
 };
 
 export type ListedResult<T extends Entity> = {
@@ -31,11 +37,11 @@ export type ListedResult<T extends Entity> = {
 export interface CrudRepository<T extends Entity> {
   create(entity: CreateEntity<T>): Promise<T>;
 
-  update(entity: UpdateEntity<T>, filter: Filter<T>): Promise<T | null>;
+  update(entity: UpdateEntity<T>, id: string): Promise<T | null>;
 
-  remove(filter: Filter<T>): Promise<boolean>;
+  remove(id: string): Promise<boolean>;
 
-  findOne(filter: Filter<T>): Promise<T | null>;
+  findOne(id: string): Promise<T | null>;
 
-  findAll(cursor: Cursor, filter?: Filter<T>): Promise<ListedResult<T>>;
+  findAll(query: ListedQuery<T>): Promise<ListedResult<T>>;
 }

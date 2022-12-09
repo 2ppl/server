@@ -1,9 +1,9 @@
 import {
   CreateEntity,
   CrudRepository,
-  Cursor,
   Entity,
   Filter,
+  ListedQuery,
   ListedResult,
   UpdateEntity,
 } from './crud-repository';
@@ -28,39 +28,45 @@ export class OrmCrudRepository<T extends Entity> implements CrudRepository<T> {
     return result;
   }
 
-  async update(entity: UpdateEntity<T>, filter: Filter<T>): Promise<T | null> {
+  async update(entity: UpdateEntity<T>, id: string): Promise<T | null> {
     console.log('OrmCrudRepository UPDATE');
     console.log('entity', entity);
-    console.log('filter', filter);
+    console.log('id', id);
     const now = (new Date()).toISOString();
-    const result = await this.mc.query().findById(filter['id']).patch({
+    const prevEntity = await this.mc.query().findById(id);
+    if (!prevEntity) {
+      return null;
+    }
+    const result = await prevEntity.patch({
       ...entity,
       updatedAt: now,
     });
     console.log('result', result);
-    return result;
+    if (result > 0) {
+      return this.mc.query().findById(id);
+    }
+    return null;
   }
 
-  async remove(filter: Filter<T>): Promise<boolean> {
+  async remove(id: string): Promise<boolean> {
     console.log('OrmCrudRepository REMOVE');
-    console.log('filter', filter);
-    const result = await this.mc.query().deleteById(filter['id']);
+    console.log('id', id);
+    const result = await this.mc.query().deleteById(id);
     console.log('result', result);
-    return result;
+    return result > 0;
   }
 
-  async findOne(filter: Filter<T>): Promise<T | null> {
+  async findOne(id: string): Promise<T | null> {
     console.log('OrmCrudRepository FIND ONE');
-    console.log('filter', filter);
-    const result = await this.mc.query().findById(filter['id']);
+    console.log('id', id);
+    const result = await this.mc.query().findById(id);
     console.log('result', result);
     return result;
   }
 
-  async findAll(cursor: Cursor, filter?: Filter<T>): Promise<ListedResult<T>> {
+  async findAll(query: ListedQuery<T>): Promise<ListedResult<T>> {
     console.log('OrmCrudRepository FIND ALL');
-    console.log('cursor', cursor);
-    console.log('filter', filter);
+    console.log('query', query);
     const result = await this.mc.query();
     console.log('result', result);
     return {
