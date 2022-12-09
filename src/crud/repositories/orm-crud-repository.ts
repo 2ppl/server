@@ -33,11 +33,7 @@ export class OrmCrudRepository<T extends Entity> implements CrudRepository<T> {
     console.log('entity', entity);
     console.log('id', id);
     const now = (new Date()).toISOString();
-    const prevEntity = await this.mc.query().findById(id);
-    if (!prevEntity) {
-      return null;
-    }
-    const result = await prevEntity.patch({
+    const result = await this.mc.query().findById(id).patch({
       ...entity,
       updatedAt: now,
     });
