@@ -1,7 +1,7 @@
 import { Schema } from '@2ppl/core/examples';
-import { CrudFastifyService } from '../../../crud';
+import { FastifyCrudService } from '../../../crud';
 
-export class Service extends CrudFastifyService<Schema.Example.EntityCrudType> implements Schema.Example.EntityService {
+export class Service extends FastifyCrudService<Schema.Example.EntityCrudType> implements Schema.Example.EntityService {
   async superCreate(
     data: Schema.Example.CreateEntity,
   ): Promise<Schema.Example.SingleEntity> {

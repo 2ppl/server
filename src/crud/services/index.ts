@@ -1,1 +1,1 @@
-export * from './crud-fastify.service';
+export * from './fastify-crud-service';

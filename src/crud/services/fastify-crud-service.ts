@@ -2,7 +2,7 @@ import { BaseCrudType, CrudFindAllQuery, CrudFindAllResult, CrudService } from '
 import { FastifyError } from '../../api';
 import { CrudRepository } from '../repositories';
 
-export abstract class CrudFastifyService<T extends BaseCrudType> implements CrudService<T> {
+export abstract class FastifyCrudService<T extends BaseCrudType> implements CrudService<T> {
   protected repository?: CrudRepository<any>;
 
   async create(data: T['createEntity']): Promise<T['singleEntity']> {
