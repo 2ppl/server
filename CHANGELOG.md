@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/2ppl/server/compare/v2.3.2...v2.3.3) (2022-12-12)
+
+
+### Bug Fixes
+
+* do minor changes in crud types \BREAKING CHANGE: update core ([441fef3](https://github.com/2ppl/server/commit/441fef3c9d2b9ae04a5652166e20be975e1c1a7a))
+
 ## [2.3.2](https://github.com/2ppl/server/compare/v2.3.1...v2.3.2) (2022-12-09)
 
 
