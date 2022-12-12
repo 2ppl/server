@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@2ppl/core@^1.0.2":
-  version "1.0.2"
-  resolved "https://npm.pkg.github.com/download/@2ppl/core/1.0.2/ad9294669453d7d9783978e8b4492fcedf021066#ad9294669453d7d9783978e8b4492fcedf021066"
-  integrity sha512-uv/YsaWnGRbFidcqOXMiqugPVhoqcEFG0upcMQCOf0RGn3anZs/5hy4VXJYVm9tUZPre6w0s08E9Tjt02/Y9cw==
+"@2ppl/core@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@2ppl/core/1.1.0/7ec9ac4f686460249268863fb8751e75bcd4bff4#7ec9ac4f686460249268863fb8751e75bcd4bff4"
+  integrity sha512-5I4e8+LDeRHPuGXCfrFvM8Q150zFe+sH883x3iWDWnDcxvucHwfrP8sShVqyZNTFYv8Hjsug3WqoA4IhZaEBoA==
   dependencies:
     "@sinclair/typebox" "^0.25.8"
     axios "^0.27.2"

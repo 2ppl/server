@@ -39,18 +39,9 @@ export abstract class FastifyCrudService<T extends BaseCrudType> implements Crud
     throw new Error('Not Implemented');
   }
 
-  async findAll(query?: CrudFindAllQuery<T>): Promise<CrudFindAllResult<T>> {
+  async findAll(query?: CrudFindAllQuery): Promise<CrudFindAllResult<T['listedEntity']>> {
     if (this.repository) {
-      const {
-        filter,
-        ...cursor
-      } = query || {};
-      return this.repository.findAll({
-        limit: cursor.limit,
-        offset: cursor.offset,
-        order: cursor.order,
-        filter,
-      });
+      return this.repository.findAll(query || {});
     }
     throw new Error('Not Implemented');
   }

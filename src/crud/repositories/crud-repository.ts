@@ -8,17 +8,6 @@ export type CreateEntity<T extends Entity> = Omit<T, 'id' | 'createdAt' | 'updat
 
 export type UpdateEntity<T extends Entity> = Partial<CreateEntity<T>>;
 
-export type FilterValue = {
-  equal?: string;
-  like?: string;
-  lte?: string;
-  gte?: string;
-  lt?: string;
-  gt?: string;
-} | string;
-
-export type Filter<T extends Entity> = Partial<Record<keyof T, FilterValue>>;
-
 export type ListedQuery<T extends Entity> = {
   limit?: number;
   offset?: number;
@@ -26,7 +15,13 @@ export type ListedQuery<T extends Entity> = {
     field: string;
     direction: 'asc' | 'desc';
   };
-  filter?: Filter<T>;
+  filter?: Partial<Record<keyof T, string
+    | { equal?: string; }
+    | { like?: string; }
+    | { gte?: string; }
+    | { lte?: string; }
+    | { gt?: string; }
+    | { lt?: string; }>>;
 };
 
 export type ListedResult<T extends Entity> = {

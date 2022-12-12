@@ -2,7 +2,6 @@ import {
   CreateEntity,
   CrudRepository,
   Entity,
-  Filter,
   ListedQuery,
   ListedResult,
   UpdateEntity,

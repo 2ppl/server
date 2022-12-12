@@ -1,8 +1,8 @@
 import {
   AnyCrudType,
   crudApiConfig,
+  crudFindAllQuery,
   CrudFindAllQuery,
-  makeCrudFindAllQuery,
   makeCrudFindAllResult
 } from '@2ppl/core/crud';
 import { FastifyRequest, RouteOptions } from 'fastify';
@@ -13,16 +13,13 @@ export function makeFindAllRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
     method: crudApiConfig.findAll.method as any,
     url: crudApiConfig.findAll.url,
     schema: {
-      querystring: makeCrudFindAllQuery(
-        props.crudSchema.entityOrderField,
-        props.crudSchema.entityFilter,
-      ),
+      querystring: crudFindAllQuery,
       response: {
         200: makeCrudFindAllResult(props.crudSchema.listedEntity),
       },
     },
     handler: async (request: FastifyRequest) => props.crudService.findAll(
-      request.query as CrudFindAllQuery<any>,
+      request.query as CrudFindAllQuery,
     ),
   };
 }
