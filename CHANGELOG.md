@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/2ppl/server/compare/v2.3.3...v2.4.0) (2023-01-31)
+
+
+### Features
+
+* add with method to add-module class ([fb0483f](https://github.com/2ppl/server/commit/fb0483f78bee6cf99ae3f550c31a9280020db116))
+
 ## [2.3.3](https://github.com/2ppl/server/compare/v2.3.2...v2.3.3) (2022-12-12)
 
 
