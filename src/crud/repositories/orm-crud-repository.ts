@@ -8,7 +8,7 @@ import {
 } from './crud-repository';
 
 export class OrmCrudRepository<T extends Entity> implements CrudRepository<T> {
-  private readonly mc: any;
+  protected readonly mc: any;
 
   constructor(mc: any) {
     this.mc = mc;
@@ -60,13 +60,33 @@ export class OrmCrudRepository<T extends Entity> implements CrudRepository<T> {
   }
 
   async findAll(query: ListedQuery<T>): Promise<ListedResult<T>> {
-    console.log('OrmCrudRepository FIND ALL');
+    console.log('OrmCrudRepository FIND ALL JKE');
     console.log('query', query);
-    const result = await this.mc.query();
-    console.log('result', result);
+
+    const request = this.mc.query();
+    const count = this.mc.query().count();
+
+    const offset = Number(query?.offset);
+
+    if (offset) {
+      request.offset(offset);
+    }
+
+    const limit = Number(query?.limit);
+
+    if (limit) {
+      request.limit(limit);
+    }
+
+    const list = await request;
+    const total = await count;
+
+    console.log('list', list);
+    console.log('total', total[0].count);
+
     return {
-      list: result,
-      total: result.length,
+      list,
+      total: total[0]?.count,
     };
   }
 }
