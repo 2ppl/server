@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/2ppl/server/compare/v2.4.0...v2.5.0) (2023-02-16)
+
+
+### Features
+
+* patch fastify schema with tags ([7445394](https://github.com/2ppl/server/commit/7445394f6f4790c70d7e3c5b9dea155280d576d3))
+
 # [2.4.0](https://github.com/2ppl/server/compare/v2.3.3...v2.4.0) (2023-01-31)
 
 
