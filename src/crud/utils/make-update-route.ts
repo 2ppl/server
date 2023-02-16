@@ -7,6 +7,7 @@ export function makeUpdateRoute<T extends AnyCrudType>(props: CrudRouteProps<T>)
     method: crudApiConfig.update.method as any,
     url: crudApiConfig.update.url,
     schema: {
+      tags: ['crud'],
       params: props.crudSchema.entityKey,
       body: props.crudSchema.updateEntity,
       response: {

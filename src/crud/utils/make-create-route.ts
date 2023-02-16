@@ -7,6 +7,7 @@ export function makeCreateRoute<T extends AnyCrudType>(props: CrudRouteProps<T>)
     method: crudApiConfig.create.method as any,
     url: crudApiConfig.create.url,
     schema: {
+      tags: ['crud'],
       body: props.crudSchema.createEntity,
       response: {
         200: props.crudSchema.singleEntity,

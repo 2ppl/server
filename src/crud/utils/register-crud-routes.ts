@@ -1,10 +1,16 @@
 import { AnyCrudType, CrudSchema, CrudService } from '@2ppl/core/crud';
-import { FastifyInstance } from 'fastify';
+import { FastifyInstance, FastifySchema } from 'fastify';
 import { makeFindOneRoute } from './make-find-one-route';
 import { makeFindAllRoute } from './make-find-all-route';
 import { makeCreateRoute } from './make-create-route';
 import { makeUpdateRoute } from './make-update-route';
 import { makeRemoveRoute } from './make-remove-route';
+
+declare module 'fastify' {
+  interface FastifySchema {
+    tags?: Array<string>;
+  }
+}
 
 export type RegisterCrudRoutesProps<T extends AnyCrudType> = {
   fastifyInstance: FastifyInstance;

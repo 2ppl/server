@@ -7,6 +7,7 @@ export function makeFindOneRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
     method: crudApiConfig.findOne.method as any,
     url: crudApiConfig.findOne.url,
     schema: {
+      tags: ['crud'],
       params: props.crudSchema.entityKey,
       response: {
         200: props.crudSchema.singleEntity,

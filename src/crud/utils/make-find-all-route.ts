@@ -13,6 +13,7 @@ export function makeFindAllRoute<T extends AnyCrudType>(props: CrudRouteProps<T>
     method: crudApiConfig.findAll.method as any,
     url: crudApiConfig.findAll.url,
     schema: {
+      tags: ['crud'],
       querystring: crudFindAllQuery,
       response: {
         200: makeCrudFindAllResult(props.crudSchema.listedEntity),

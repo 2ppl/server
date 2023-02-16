@@ -7,6 +7,7 @@ export function makeRemoveRoute<T extends AnyCrudType>(props: CrudRouteProps<T>)
     method: crudApiConfig.remove.method as any,
     url: crudApiConfig.remove.url,
     schema: {
+      tags: ['crud'],
       params: props.crudSchema.entityKey,
     },
     handler: async (request: FastifyRequest) => props.crudService.remove(
