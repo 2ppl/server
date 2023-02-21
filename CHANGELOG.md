@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/2ppl/server/compare/v2.5.0...v2.5.1) (2023-02-21)
+
+
+### Bug Fixes
+
+* update README ([4bebd89](https://github.com/2ppl/server/commit/4bebd891a01d4c6649761858a644b59e41249d92))
+
 # [2.5.0](https://github.com/2ppl/server/compare/v2.4.0...v2.5.0) (2023-02-16)
 
 
